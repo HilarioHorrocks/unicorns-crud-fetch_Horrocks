@@ -8,7 +8,7 @@ export const useUnicorns = () => useContext(UnicornContext);
 export const UnicornProvider = ({ children }) => {
   const [unicorns, setUnicorns] = useState([]);
 
-  const API_URL = "https://crudcrud.com/api/4c65fa6d329445f3a76b16c90ec08b4c/unicorns";
+  const API_URL = "https://crudcrud.com/api/ac6490553b424d6ea952faded492cb14/unicorns";
 
   const getUnicorns = async () => {
     try {
