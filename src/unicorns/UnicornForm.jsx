@@ -16,6 +16,7 @@ const UnicornForm = () => {
     name: unicornToEdit?.name || "",
     color: unicornToEdit?.color || "",
     age: unicornToEdit?.age || "",
+    power: unicornToEdit?.power || "", // 👈 Agregado: campo poder
   };
 
   const validationSchema = Yup.object({
@@ -24,7 +25,8 @@ const UnicornForm = () => {
     age: Yup.number()
       .required("La edad es requerida")
       .positive("La edad debe ser mayor a 0")
-      .integer("Debe ser un numero entero"),
+      .integer("Debe ser un número entero"),
+    power: Yup.string().required("El poder es requerido"), // 👈 Agregado: validación de poder
   });
 
   const onSubmit = async (values, { setSubmitting }) => {
@@ -69,6 +71,12 @@ const UnicornForm = () => {
               <label>Edad</label>
               <Field name="age" type="number" className="p-inputtext w-full" />
               <ErrorMessage name="age" component="div" className="text-red-500" />
+            </div>
+
+            <div>
+              <label>Poder</label> {/* 👈 Agregado: input poder */}
+              <Field name="power" className="p-inputtext w-full" />
+              <ErrorMessage name="power" component="div" className="text-red-500" />
             </div>
 
             <Button

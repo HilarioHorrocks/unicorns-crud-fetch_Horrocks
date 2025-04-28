@@ -1,11 +1,12 @@
 :root {
-  --color-principal: #5087ff;
-  --color-principal-hover: #e25f3a;
-  --color-secundario: #2c2c3f;
-  --color-fondo: #40808f;
-  --color-texto: #1f1f1f;
-  --borde-card: 20px;
-  --sombra-suave: 0 6px 16px rgba(0, 0, 0, 0.08);
+  --color-principal: #a96eff; /* lavanda */
+  --color-principal-hover: #ff88c2; /* rosa unicornio */
+  --color-secundario: #ffe6f7; /* fondo claro */
+  --color-fondo: #e3f0ff; /* azul pastel */
+  --color-texto: #4b007d; /* violeta oscuro */
+  --borde-card: 25px; /* Cambié el radio de los bordes de las tarjetas */
+  --sombra-suave: 0 6px 16px rgba(174, 144, 255, 0.2); /* Sombra suave */
+  --sombra-form: 0 8px 24px rgba(174, 144, 255, 0.3); /* Sombra más marcada para el formulario */
 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color-scheme: light;
@@ -14,7 +15,7 @@
 body {
   margin: 0;
   padding: 40px 20px;
-  background-color: var(--color-fondo);
+  background: linear-gradient(135deg, #ffe6f9, #e0f7ff, #f0e7ff); /* 🌈 Fondo unicornio pastel */
   color: var(--color-texto);
   display: flex;
   flex-direction: column;
@@ -27,12 +28,13 @@ h1, h2, h3 {
   font-weight: 700;
 }
 
+/* Botones */
 button {
-  padding: 0.6em 1.2em;
-  font-size: 1rem;
+  padding: 0.8em 1.5em;
+  font-size: 1.1rem;
   font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   background-color: var(--color-principal);
   color: #fff;
   cursor: pointer;
@@ -42,9 +44,10 @@ button {
 
 button:hover {
   background-color: var(--color-principal-hover);
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 
+/* Contenedor principal */
 .container {
   display: flex;
   flex-direction: column;
@@ -53,19 +56,20 @@ button:hover {
   width: 100%;
 }
 
+/* Tarjetas */
 .card {
-  background-color: rgb(255, 255, 255);
+  background: linear-gradient(145deg, #ffffff, #fce6ff);
   border-radius: var(--borde-card);
   padding: 40px;
   box-shadow: var(--sombra-suave);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
 }
 
 .card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 5px;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
 }
 
 .card p {
@@ -76,46 +80,49 @@ button:hover {
 .card-buttons {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .edit-btn,
 .delete-btn {
   flex: none;
-  padding: 0.5em 1em;
-  background-color: #e0e0e0;
-  color: #333;
+  padding: 0.6em 1.2em;
+  background-color: #ffe6ff;
+  color: #4b007d;
   transition: all 0.2s ease;
+  font-weight: bold;
 }
 
 .edit-btn:hover {
-  background-color: #d1e8ff;
+  background-color: #d6d6ff;
 }
 
 .delete-btn:hover {
-  background-color: #ffd1d1;
+  background-color: #ffb3d6;
 }
 
+/* Formulario */
 form {
-  background-color: rgb(34, 158, 127);
-  padding: 30px;
+  background: linear-gradient(135deg, #fce4ff, #d8f4ff);
+  padding: 40px;
   border-radius: var(--borde-card);
-  box-shadow: var(--sombra-suave);
+  box-shadow: var(--sombra-form);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   max-width: 600px;
   width: 100%;
 }
 
 form input {
-  padding: 12px;
-  border-radius: 8px;
+  padding: 15px;
+  border-radius: 12px;
   border: 1px solid #ccc;
-  font-size: 1rem;
+  font-size: 1.1rem;
   outline: none;
-  transition: border 0.2s ease;
+  transition: border 0.2s ease, background-color 0.3s ease;
+  background-color: #fff8ff;
 }
 
 form input:focus {
@@ -124,11 +131,12 @@ form input:focus {
 
 form button {
   align-self: flex-start;
+  padding: 0.8em 1.5em;
 }
 
 /* Tabla PrimeReact */
 .custom-table .p-datatable {
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
   box-shadow: var(--sombra-suave);
 }
@@ -142,15 +150,15 @@ form button {
 }
 
 .custom-table .p-datatable-tbody > tr:nth-child(odd) {
-  background-color: #fafafa;
+  background-color: #fff3fb;
 }
 
 .custom-table .p-datatable-tbody > tr:nth-child(even) {
-  background-color: #ffffff;
+  background-color: #f9f9ff;
 }
 
 .custom-table .p-datatable-tbody > tr:hover {
-  background-color: #f1f1f1;
+  background-color: #ffe1f0;
   cursor: pointer;
 }
 
@@ -159,4 +167,15 @@ form button {
     flex-direction: column;
     align-items: stretch;
   }
+}
+
+/* 🔥 Letras DENTRO de los inputs y textareas en negro */
+input, textarea, select {
+  color: #000;
+}
+
+/* 🔥 Placeholder (texto de ayuda adentro del input) en gris */
+input::placeholder,
+textarea::placeholder {
+  color: #777;
 }

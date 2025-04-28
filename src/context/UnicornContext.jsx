@@ -8,7 +8,7 @@ export const useUnicorns = () => useContext(UnicornContext);
 export const UnicornProvider = ({ children }) => {
   const [unicorns, setUnicorns] = useState([]);
 
-  const API_URL = "https://crudcrud.com/api/7ff7d01cab0e4e65a41d9e271623159b/unicorns";
+  const API_URL = "https://crudcrud.com/api/4c65fa6d329445f3a76b16c90ec08b4c/unicorns";
 
   const getUnicorns = async () => {
     try {
@@ -21,8 +21,8 @@ export const UnicornProvider = ({ children }) => {
 
   const createUnicorn = async (data) => {
     try {
-      const res = await axios.post(API_URL, data);
-      setUnicorns([...unicorns, res.data]);
+      await axios.post(API_URL, data);
+      await getUnicorns(); // 👈 Refrescamos la lista después de crear
     } catch (error) {
       console.error("Error al crear unicornio", error);
     }
@@ -31,7 +31,7 @@ export const UnicornProvider = ({ children }) => {
   const editUnicorn = async (id, data) => {
     try {
       await axios.put(`${API_URL}/${id}`, data);
-      setUnicorns(unicorns.map((u) => (u._id === id ? { ...data, _id: id } : u)));
+      await getUnicorns(); // 👈 Refrescamos la lista después de editar
     } catch (error) {
       console.error("Error al editar unicornio", error);
     }
@@ -40,7 +40,7 @@ export const UnicornProvider = ({ children }) => {
   const deleteUnicorn = async (id) => {
     try {
       await axios.delete(`${API_URL}/${id}`);
-      setUnicorns(unicorns.filter((u) => u._id !== id));
+      setUnicorns(unicorns.filter((u) => u._id !== id)); // Borrado local puede quedar bien
     } catch (error) {
       console.error("Error al eliminar unicornio", error);
     }
